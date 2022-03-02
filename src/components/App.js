@@ -11,23 +11,29 @@ class App extends Component {
     bad: 0,
   }
 
-  addGood = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }))
-  }
+  // addGood = () => {
+  //   this.setState(prevState => ({
+  //     good: prevState.good + 1,
+  //   }))
+  // }
 
-  addNeutral = () => {
-    this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }))
-  }
+  // addNeutral = () => {
+  //   this.setState(prevState => ({
+  //     neutral: prevState.neutral + 1,
+  //   }))
+  // }
 
-  addBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
-    }))
-  }
+  // addBad = () => {
+  //   this.setState(prevState => ({
+  //     bad: prevState.bad + 1,
+  //   }))
+  // }
+
+  handleBtnClick = label => {
+    this.setState(prevState => {
+      return { [label]: prevState[label] + 1 };
+    });
+  };
 
   countTotal = () => {
     const totalFBs = this.state.good + this.state.neutral + this.state.bad;
@@ -49,9 +55,11 @@ class App extends Component {
       <>
       <Section title="Please leave feedback">
         <FeedbackOptions 
-          addGood={this.addGood}
-          addNeutral={this.addNeutral}
-          addBad={this.addBad}
+          // addGood={this.addGood}
+          // addNeutral={this.addNeutral}
+          // addBad={this.addBad}
+
+          labels={['good', 'neutral', 'bad']} onLeaveFeedback={this.handleBtnClick}
         />
       </Section>
       <Section title="Statistics">
